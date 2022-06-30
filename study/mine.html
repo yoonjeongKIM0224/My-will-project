@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, ::before, ::after{margin: 0; padding: 0; box-sizing: border-box;}
+        ul, li {list-style: none;}
+        .hidden {position: absolute; z-index: -9999; top: -9999px; left: -9999px; width: 1px; height: 1px; overflow: hidden; font-size: 0;}
+        a {text-decoration: none; color: black;}
+        .wrap {display: block; position: relative; width: 100%; height: auto;}
+        .wrap::before {content: ''; display: block; position: absolute; left: 0; top: 72px; width: 100%; border-bottom: 1px solid #dddddd; z-index: -1;}
+        .content {display: block; width: 1200px; margin: 0 auto;  padding-bottom: 120px; border: 1px solid #fff;}
+    </style>
+</head>
+<body>
+    <!-- Wrap -->
+    <div class="wrap">
+        <!-- Content -->
+        <div class="content">
+            <!-- Content Header -->
+            <div class="content-header">
+
+            </div>
+            <!-- //Content Header -->
+
+            <style>
+                .tab-menu-wrap {display: block; width: 100%; height: 72px;}
+                .tab-menu-wrap .ui-tab {display: flex; justify-content: center; width: 100%; height: 72px;}
+                .tab-menu-wrap .ui-tab li {display: inline-block; flex: 1;}
+                .tab-menu-wrap .ui-tab li a {display: flex; align-items: center; justify-content: center; height: 100%; color: #bbb;}
+
+                .tab-menu-wrap .ui-tab li.on{border-bottom: 4px solid slateblue;}
+                .tab-menu-wrap .ui-tab li.on a{color: slateblue; font-weight: 600;}
+
+                .tab-container {display: block; padding-top: 80px;}
+                .tab-content {display: block;}
+                .board-wrap {display: block;}
+                .board-list-header {margin-bottom: 24px; font-size: 16px;}
+                .board-list-header span {color: slateblue;}
+            </style>
+
+            <!-- Content Body -->
+            <div class="content-body">
+                <!-- Tab menu -->
+                <div class="tab-menu-wrap">
+                    <ul class="ui-tab">
+                        <li class="on"><a href="#">교육실</a></li>
+                        <li><a href="#">자료실</a></li>
+                    </ul>
+                </div>
+                <!-- //Tab menu -->
+
+                <!-- Tab Container -->
+                <div class="tab-container">
+                    <!-- 교육실 -->
+                    <section class="tab-content on">
+                        <h3 class="hidden">교육실</h3>
+
+                        <!-- Board -->
+                        <div class="board-wrap">
+                            <div class="board-list-header">
+                                총 <span>35</span> 건
+                            </div>
+
+                            <div class="board-list-body">
+                                <div class="board-list">
+                                    <ul class="board-list-gallery">
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="board-pager-wrap">
+                                    <button type="button" class="btn btn-md btn_more">
+                                        <span class="btn-txt">
+                                            더보기
+                                        </span>
+                                        <span class="ico-down"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //Board -->
+                    </section>
+                    <!-- //교육실 -->
+
+                    <!-- 자료실 -->
+                    <section class="tab-content">
+                        <h3 class="hidden">교육실</h3>
+
+                        <!-- Board -->
+                        <div class="board-wrap">
+                            <div class="board-list-header">
+                                총<span>45건</span>
+                            </div>
+
+                            <div class="board-list-body">
+                                <div class="board-list">
+                                    <ul class="board-list-gallery">
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span class="board-img">
+                                                <img src="./img/gallery.png" alt="설명">
+                                            </span>
+                                            <span class="board-title">
+                                                중고등학생 대상 진로체험프로그램<br>
+                                                - 제주 귀일 중학교
+                                            </span>
+                                        </a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="board-pager-wrap">
+                                    <button type="button" class="btn btn-md btn_more">
+                                        <span class="btn-txt">
+                                            더보기
+                                        </span>
+                                        <span class="ico-down"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //Board -->
+                    </section>
+                    <!-- //자료실 -->
+                </div>
+                <!-- //Tab Container -->
+            </div>
+            <!-- //Content Body -->
+        </div>
+        <!-- //Content -->
+    </div>
+    <!-- //Wrap -->
+</body>
+</html>

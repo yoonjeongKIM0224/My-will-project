@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>렛츠기릿 자바스크립트</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <p>알고리즘 = 순서도</p>
+        </li>
+    </ul>
+
+    <article>
+        <h2>문자열</h2>
+        <section>
+            <h3>문자열 기본(따옴표, 백틱, typeof, escape)</h3>
+            <p class="nomal">'', "", ``를 사용한다.</p>
+            <p class="nomal">``(백틱)은 줄바꿈이 가능하다.</p>
+            <p class="nomal">\n: 줄바꿈</p>
+            <p class="nomal console">typeof '문자열': 명령어로 자료형 확인 가능</p>
+            <p class="nomal console">따옴표를 문자열에 넣고 싶다면, '', ""을 번갈아가면서 쓰거나, \를 입력 후 사용한다.</p>
+        </section>
+
+        <section>
+            <h3>문자열 합치기(연산자)</h3>
+            <p class="nomal console">'문자열이 긴 경우에는' + '문자열을' + '쪼갠 뒤' + '다시 합칩니다.'</p>
+            <p class="nomal">띄어쓰기도 문자열에 포함 필수!</p>
+        </section>
+    </article>
+
+    <article>
+        <h2>숫자</h2>
+        <section>
+            <h3>숫자 기본(parseInt, NaN)</h3>
+            <p class="nomal">5e4 = 50000 (0이 4개)</p>
+            <p class="nomal">5e-4 = 0.0005</p>
+            <p class="nomal console">NaN: number(숫자가 아니지만 숫자인 애, 공식적으로는 숫자)</p>
+            <p class="nomal console">parseInt(): 숫자(정수)를 반환</p>
+            <p class="nomal console">Number(): 숫자(정수)를 반환</p>
+            <p class="nomal console">parseFloat(): 소수점까지 반환</p>
+            <p class="nomal console">substr(): 숫자 자르기</p>
+            <p class="nomal console" onclick="parseIntPrompt()">parseInt(prompt()): prompt()는 문자열을 받는 것인데 숫자(정수)로 바꿔줌</p>
+            <p class="nomal console">Infinity: 2/0과 같은 무한(자료형: number, 음수로도 존재)</p>
+            <p class="nomal">
+                <b>형 변환(type casting)</b><br>
+                다른 자료형끼리 더할 경우 무조건 하나가 바뀜(규칙 존재)<br>
+                ex)'문자열' + 0 *문자열과 문자열이 아닌 것을 더하면 문자열 아닌 것이 문자열로 변경됨
+            </p>
+        </section>
+    </article>
+
+    <article>
+        <h2>연산자 우선순위, 소수 계산 주의점</h2>
+        <section>
+            <h3>연산자 우선순위, 소수 계산 주의점</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">우선순위</th>
+                        <th scope="col">연산자</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>()(그룹화)</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>., [], new, ()(함수호출)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>new(인수 없이)</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>++(후위), --(후위)</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>!, ~, +(단항), -(단항), ++(전위), --(전위), typeof, void, delete, await</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>**</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>*, /, %</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>+(다항), -(다항)</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>&lt;&lt;, >>, >>></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>&lt;, &lt;=, >, >=, in, instanceof</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>==, !=, ===, !==</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>&</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>^</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>|</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>&&</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>||</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>> :(삼항 연산자)</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>=, +=, -=, **=, *=, /=, %=, &lt;&lt;=, >>=, >>>=, &=, ^=, |=</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>yield, yield*</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>,(쉼표)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </article>
+
+    <article>
+        <h2>불 값(boolean, 값들의 비교)</h2>
+        <section>
+            <h3>불 값(boolean, 값들의 비교)</h3>
+            <p class="nomal">boolean 값은 ;로 감싸면 안 된다.</p>
+            <p class="nomal console">5>3, 3>6 등을 콘솔창에 치면 불 값이 나온다.</p>
+            <p class="nomal">== (같다는 =을 두 번, = 한 번은 대입)</p>
+            <p class="nomal console">NaN == NaN은 false</p>
+            <p class="nomal console">NaN != NaN은 true</p>
+            <p class="nomal console">true > false 는 true (이유: true는 1이라는 의미와 비슷함)</p>
+            <p class="nomal console">
+                문자열도 비교가 가능하다.<br>
+                ex)'b' > 'a' 사전 순으로 뒤에 나올 수록 크다.
+            </p>
+            <p class="nomal console">
+                특수문자도 비교가 가능하다.<br>
+                ex) &은 65286이다. <i>'&'.charCodeAt()</i> *왜 다르징 ㅎ
+            </p>
+            <p class="nomal console">
+                자료형이 숫자가 아닌 자료형은 숫자로 변환 후 비교한다.<br>
+                '3'은 변환 가능하지만, 'abc' 등은 숫자로 변환이 불가하여 NaN으로 인식된다.<br>(NaN은 !=NaN을 제외하고는 무조건 false가 나온다.)
+            </p>
+            <p class="nomal">== (같다.) === (자료형까지도 같다.)</p>
+            <p class="nomal">1 == true (값: true)<br>1 === true (값: false)</p>
+            <p class="nomal">1 != '1' (값: false) 1 !== '1' (값: true)</p>
+            <p class="nomal">5 + 4 * 3 === 27 (문제! 동영상 13분 경)</p>
+        </section>
+    </article>
+
+    <article>
+        <h2>논리연산자</h2>
+        <section>
+            <h3>논리연산자</h3>
+            <p class="nomal console">
+                ! 연산자: 참을 거짓으로, 거짓을 참으로 만들어 준다.<br>
+                ex) !true(false), !flase(true)
+            </p>
+            <p class="nomal console">다른 자료형을 불 값으로 변환할 수 있으며, 2가지 방법이 있다.<br>
+                ex)'a' 는 불값으로 변환하려는 불값이 아닌 자료형<br> 
+                1. boolean('a'); <br> 
+                2. !!'a' (기존값의 반대 -> 기존값의 반대의 반대(처음 값))
+            </p>
+            <p class="nomal">false, ''(빈문자열), 0, NaN, undefinde, null, document.all을 제외하고는 거의 true이다. <i>*위의 두 가지 방법으로 확인 가능</i></p>
+            <p class="nomal">!(2 &lt; 0) 값: true<br> !2 &lt; 0 값: flase (우선순위표 확인)</p>
+        </section>
+    </article>
+
+    <article>
+        <h2>undefined와 null(빈 값들)</h2>
+        <section>
+            <h3>undefined</h3>
+            <p class="nomal">console.log 함수는 return 값이 존재하지 않는 함수이기에 console에서 실행하게 된다면 undefined가 반환<br>
+                console.log에서 undefined가 나오는 부분 앞에는 작게 화살표 ( &lt; )가 붙어있다.
+            </p>
+            <p class="nomal">undefined의 불값은 false다. <b>단, undefinde와 false가 같지는 않다.</b></p>
+            <p class="nomal">undefined는 기본값이라는 의미가 있다.</p>
+        </section>
+        <section>
+            <h3>null</h3>
+            <p class="nomal">다른 자료형으로는 null이 있다. <b>단, undefined처럼 빈 값을 의미하지만 같지는 않다.</b></p>
+            <p class="nomal">의도적으로 빈 값을 나타낼 때 사용한다.</p>
+            <p class="nomal console">undefined와 불값은 false로 같지만, 자료형은 다르다.</p>
+            <p class="nomal console">null의 자료형은 null이지만, typeof를 돌려봤을 때 object가 나오는 이유는 자바스크립트에서 유명한 버그이다.<br>
+                언어가 만들어진 초창기 실수 때문에 object가 됐다. 따라서 null인지 확인하기 위해서는 === null을 사용해야 한다.
+            </p>
+            <p class="nomal">null은 역할이 없다.</p>
+        </section>
+    </article>
+
+    <script>
+        console.log(typeof '문자열');
+        console.log('\'정말\'그랬니?');
+        console.log('\\역슬래시 는 두 번');
+
+        console.log('문자열이 긴 경우에는 ' + '문자열을 ' + '쪼갠 뒤 ' + '다시 합칩니다.');
+        console.log(typeof NaN);
+        console.log(parseInt('124') + 5);
+        console.log(parseInt('3월 4월 5월'));
+        console.log(Number('124') + 5);
+        console.log(parseInt('3.4564648'));
+        console.log('12345678'.substr(0, 2)); //앞에서 2개만
+        function parseIntPrompt(){
+            prompt('기본이자 문자열 반환');
+            typeof(prompt('자료형을 알려줌'));
+            parseInt(prompt('parseInt: 문자열을 정수로 반환'));
+            parseFloat(prompt('parseFloat 문자열을 소수점까지 반환'));
+        }
+        console.log(2/0); //Infinity
+
+        console.log(typeof true); //boolean
+        console.log(3>5, 3>6);
+        console.log(`NaN == NaN  ${NaN == NaN}`);
+        console.log(`NaN != NaN  ${NaN != NaN}`);
+        console.log(`true > false  ${true > false}`);
+        console.log(`'b' > 'a'  ${'b' > 'a'}`);
+        console.log('&'.charCodeAt());
+        console.log('3'<5, 'abc'>3);
+
+        console.log(`!true =${!true}\n!false = ${!false}`);
+        console.log(`Boolean('a') = ${Boolean('a')}\n!'a' = ${!'a'}\n!!'a' = ${!!'a'}`);
+
+        console.log(`== ${undefined == null}\n=== ${undefined === null}`);
+        console.log(typeof undefined);
+        console.log(typeof null);
+    </script>
+</body>
+</html>

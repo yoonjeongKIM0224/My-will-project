@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/ui.common.js"></script>
+</head>
+
+<body>
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        *,
+        ::before,
+        ::after {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .wrap {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 400px;
+            background-color: antiquewhite;
+        }
+
+        .content-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            display: block;
+            position: relative;
+            width: 282px;
+            height: 158px;
+            background-color: aquamarine;
+            margin: 20px 0 0 24px;
+        }
+
+        .content-box .box:first-child {
+            margin-left: 0;
+        }
+
+        .btnContent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .listBtn {
+            display: block;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            color: #666;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            width: 156px;
+            height: 48px;
+            border-radius: 24px;
+            border: solid 1px #ddd;
+            background-color: #fff;
+        }
+    </style>
+    <script>
+
+        function setAdd(btn) {
+            var target = $(btn).data("data-target");
+            var $target = $(target);
+            var addSeemore = '\
+                <div class="content-box">\
+                <li class="box"></li>\
+                <li class="box"></li>\
+                <li class="box"></li>\
+                <li class="box"></li>\
+                </div>';
+            $(".content").append(addSeemore);
+            console.log(1);
+        } //더보기 연습
+
+
+    </script>
+    <div class="wrap">
+        <!-- Content -->
+        <div class="content">
+            <!-- Content Header -->
+            <div class="content-header">
+
+            </div>
+            <!--// Content Header -->
+
+            <!-- Content Body -->
+            <div class="content-body">
+                <!-- Tabmenu -->
+                <div class="tab-menu-wrap">
+                    <ul class="ui-tab">
+                        <li class="on"><a href="#EduBoard">교육실</a></li>
+                        <li><a href="#DataBoard">자료실</a></li>
+                    </ul>
+                </div>
+                <!--// Tabmenu -->
+
+                <!-- Tab Container -->
+                <div class="tab-container">
+                    <!-- 교육실 -->
+                    <section id="EduBoard" class="tab-content on">
+                        <h3 class="hidden">교육실</h3>
+
+                        <!-- Board -->
+                        <div class="board-wrap">
+                            <div class="board-list-header">총 35건</div>
+                            <div class="board-list-body">
+                                <div class="board-list">
+                                    <ul class="board-list-gallery">
+                                        <li>
+                                            <a href="#">
+                                                <span class="board-img">
+                                                    <img src="blank.png" alt="설명">
+                                                </span>
+                                                <span class="board-title">
+                                                    앨범제목
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="board-pager-wrap">
+                                    <button type="button" class="btn btn-md btn_more"><span>더보기</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// Board -->
+                    </section>
+                    <!--// 교육실 -->
+
+                    <!-- 자료실 -->
+                    <section id="DataBoard" class="tab-content">
+                        <h3 class="hidden">자료실</h3>
+                        
+                        <div class="board-wrap">
+                            <div class="board-search-wrap">
+                                <form name="boardFrm" method="post">
+                                    <fieldset class="board-search">
+                                        <legend>자료실 검색</legend>
+    
+                                        <input type="text" name="sSrchString" id="sSrchSTring" maxlength="50">
+                                        <button type="submit"><span>검색</span></button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="board-list-wrap">
+                                <div class="board-list-header">총 35건</div>
+                                <div class="board-list-body">
+                                    <div class="board-list">
+                                        <table border="1" class="tbl-board-list">
+                                            <caption>
+                                                자료실 게시판<br>
+                                                번호, 제목, 등록일, 조회
+                                            </caption>
+                                            <colgroup>
+                                                <col style="width:80px">
+                                                <col style="width:auto">
+                                                <col style="width:200px">
+                                                <col style="width:200px">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">NO</th>
+                                                    <th scope="col">제목</th>
+                                                    <th scope="col">등록일</th>
+                                                    <th scope="col">조회</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a href="#">게시판 글제목입니다.</a>
+                                                    </td>
+                                                    <td>2022-01-22</td>
+                                                    <td>18</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="board-pager-wrap">
+                                        <div class="board-pager">
+                                            <a href="#" class="board-pager-nav board-pager-nav-first">맨처음</a>
+                                            <a href="#" class="board-pager-nav board-pager-nav-first">맨처음</a>
+                                            <ul class="board-page">
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">6</a></li>
+                                            </ul>
+                                            <a href="#" class="board-pager-nav board-pager-nav-next">다음</a>
+                                            <a href="#" class="board-pager-nav board-pager-nav-prev">마지막</a>
+                                        </div>
+                                        <button type="button"
+                                            class="btn btn-md btn-primary btn_board_list"><span>목록</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- //자료실 -->
+                </div>
+                <!--// Teb Container -->
+            </div>
+            <!--// Content Body -->
+        </div>
+        <!-- //Content -->
+    </div>
+</body>
+
+</html>
