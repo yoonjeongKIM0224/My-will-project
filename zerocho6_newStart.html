@@ -22,6 +22,7 @@
     <!-- <button>버튼1</button> -->
     <!-- <button>버튼2</button> -->
     <img src="./image/plan.jpg" alt="화면 설계도">
+    <img src="./image/plan02.jpg" alt="화면 설계도">
 
     <script>
         const number = Number(prompt('몇 명이 참가하나요?')); //몇 명이 참가할지 선택한다.
@@ -29,6 +30,7 @@
         const $button = document.querySelector('button');
         const $input = document.querySelector('input');
         const $word = document.querySelector('#word');
+        const $order = document.querySelector('#order');
 
         let word; //미리 만든 변수: 제시어를 저장할 변수 = 제시어
         let newWord; //미리 만든 변수: 새로 입력한 단어를 저장할 변수 = 새로 입력한 단어
@@ -39,8 +41,31 @@
                 word = newWord; //제시어(빈값도 포함)는 새로 입력한 단어가 된다.
                 $word.textContent = word; //html text
                 $input.value = ''; //인풋 작성 후 비워주는 센스
+
+                const order = parseInt($order.textContent); //현재 순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
+
+                if(order + 1 > number) { // 또는 order === number
+                    $order.textContent = 1; // html order의 텍스트를 1로 변경
+                } else {
+                    $order.textContent = order + 1;  // html order의 텍스트를 현재 순서 + 1(즉, 다음 순서)로 변경
+                }
             } else {
                 //비어 있지 않다.
+                if(word[word.length - 1] === newWord[0]) { //올바른가: word의 끝 글자와 newWord의 첫번째 글자가 같은가?
+                    word = newWord; //제시어(빈값도 포함)는 새로 입력한 단어가 된다.
+                    $word.textContent = word; //html text
+                    $input.value = ''; //인풋 작성 후 비워주는 센스
+
+                    const order = parseInt($order.textContent); //현재 순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
+
+                    if(order + 1 > number) { // 또는 order === number
+                        $order.textContent = 1; // html order의 텍스트를 1로 변경
+                    } else {
+                        $order.textContent = order + 1; // html order의 텍스트를 현재 순서 + 1(즉, 다음 순서)로 변경
+                    }  
+                } else { //올바르지 않는가
+
+                }
             }
         }
 
@@ -51,6 +76,13 @@
 
         $button.addEventListener('click', onClickButton);
         $input.addEventListener('input', onInput); //input(행위)을 하면서 발생하는 이벤트
+
+
+        /* -------------------------------------------------- 퀴즈 목록 -------------------------------------------------- */ 
+
+        // 1. 세 글자 이상의 단어를 저장하고 있는 word라는 변수가 있을 때 뒤에서 세 번째 글자를 가져오는 코드를 작성하세요.
+        wordTemp = '안녕하세요';
+        console.log(wordTemp[wordTemp.length - 3]);
     </script>
 
     <!-- <script>
