@@ -36,37 +36,24 @@
         let newWord; //미리 만든 변수: 새로 입력한 단어를 저장할 변수 = 새로 입력한 단어
 
         const onClickButton = () => {
-            if(!word) { //제시어가 비어있는가? (맨 처음 시작되는...?)
-                //비어 있다.
+            if(!word || word[word.length - 1] === newWord[0]) { //제시어가 비어있는가? 또는 입력한 단어가 올바른가?
                 word = newWord; //제시어(빈값도 포함)는 새로 입력한 단어가 된다.
                 $word.textContent = word; //html text
-                $input.value = ''; //인풋 작성 후 비워주는 센스
 
-                const order = parseInt($order.textContent); //현재 순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
+                const order = parseInt($order.textContent); //현재 3순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
 
                 if(order + 1 > number) { // 또는 order === number
                     $order.textContent = 1; // html order의 텍스트를 1로 변경
                 } else {
                     $order.textContent = order + 1;  // html order의 텍스트를 현재 순서 + 1(즉, 다음 순서)로 변경
                 }
-            } else {
-                //비어 있지 않다.
-                if(word[word.length - 1] === newWord[0]) { //올바른가: word의 끝 글자와 newWord의 첫번째 글자가 같은가?
-                    word = newWord; //제시어(빈값도 포함)는 새로 입력한 단어가 된다.
-                    $word.textContent = word; //html text
-                    $input.value = ''; //인풋 작성 후 비워주는 센스
 
-                    const order = parseInt($order.textContent); //현재 순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
-
-                    if(order + 1 > number) { // 또는 order === number
-                        $order.textContent = 1; // html order의 텍스트를 1로 변경
-                    } else {
-                        $order.textContent = order + 1; // html order의 텍스트를 현재 순서 + 1(즉, 다음 순서)로 변경
-                    }  
-                } else { //올바르지 않는가
-
-                }
+            } else { //올바르지 않는가
+                alert('올바르지 않은 단어입니다.');
             }
+
+            $input.value = ''; //인풋 작성 후 비워주는 센스
+            $input.focus(); //인풋에 포커스
         }
 
         // 인풋에 글자를 입력했을 때 값(newWord)을 가져오는 함수 = 단어 입력 input event
@@ -83,6 +70,7 @@
         // 1. 세 글자 이상의 단어를 저장하고 있는 word(wordTemp 대체)라는 변수가 있을 때 뒤에서 세 번째 글자를 가져오는 코드를 작성하세요.
         let wordTemp = '안녕하세요';
         console.log(wordTemp[wordTemp.length - 3]);
+
     </script>
 
     <!-- <script> 
