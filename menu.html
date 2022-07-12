@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 하나만 활성화 하기</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .menu {
+            display: flex;
+            background-color: yellowgreen;
+            padding: 10px;
+        }
+ 
+        .menu > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: dodgerblue;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0 5px;
+            font-size: 25px;
+        }
+
+        .menu > a.menu-active {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">
+        <a href="#" data-menu="1" class="menu-link">1</a>
+        <a href="#" data-menu="2" class="menu-link">2</a>
+        <a href="#" data-menu="3" class="menu-link">3</a>
+        <a href="#" data-menu="4" class="menu-link">4</a>
+        <a href="#" data-menu="5" class="menu-link">5</a>
+    </nav>
+
+    <script>
+    let menuLinks = document.querySelectorAll('.menu-link');
+    // let currentMenu; //현재 활성화된 메뉴를 담을 변수
+
+    function clickMenuHandler(){
+        //방법1
+        // for(let i = 0; i < menuLinks.length; i++){
+        //     menuLinks[i].classList.remove('menu-active');
+        // }
+        
+        //방법2
+        // let activeMenu = document.querySelector('.menu-active');
+        // if(activeMenu){
+        //     activeMenu.classList.remove('menu-active');
+        // }
+
+        //방법3
+        // if(currentMenu){
+        //     currentMenu.classList.remove('menu-active'); 
+        // } //커런트메뉴가 있을 경우 빼준다.
+        // this.classList.add('menu-active'); //누른 애에 메뉴액티브를 넣는다.
+        // currentMenu = this; //커런트메뉴는 누른 애다.
+    }
+
+    // 방법1
+    // for(let i = 0; i < menuLinks.length; i++){
+    //     menuLinks[i].addEventListener('click', clickMenuHandler);
+    // }
+
+    let menu = document.querySelector('.menu');
+    let currentMenu;
+
+    // 방법2 (최종 - 이벤트 위임)
+    // function clickHandler(e){
+    //     if(currentMenu){
+    //         currentMenu.classList.remove('menu-active');
+    //     }
+    //     e.target.classList.add('menu-active');
+    //     currentMenu = e.target;
+    // }
+
+    // menu.addEventListener('click', clickHandler);
+
+
+    // 최최종
+    function activate(elem){ //활성화 하기
+        elem.classList.add('menu-active');
+        currentMenu = elem;
+    }
+
+    function inactivate(elem){ //비활성화 하기
+        elem.classList.remove('menu-active');
+    }
+
+    function clickHandler(e){ //활성화 하기, 비활성화 하기
+        if(currentMenu){
+            inactivate(currentMenu);
+        }
+        activate(e.target);
+    }
+
+    menu.addEventListener('click', clickHandler);
+    activate(document.querySelectorAll('.menu-link')[0]);
+    </script>
+</body>
+</html>
