@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>렛츠기릿 자바스크립트</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <p>첫 번째 문 = 선언문, 두 번째 문 = 조건문</p>
+        </li>
+        <li>
+            <p>식과 문은 전혀 다른 것이다.</p>
+        </li>
+        <li>
+            <p>0의 불값은 false이다. !!0을 통해 확인 가능</p>
+        </li>
+    </ul>
+
+    <article>
+        <h2>조건문</h2>
+        <section>
+            <h3>조건문(if)</h3>
+            <p class="nomal">조건문: 주어진 조건에 따라 코드를 실행하거나 실행하지 않는 문</p>
+            <p class="nomal console">기본형식: if(조건식){<br>&nbsp;&nbsp;동작문}</p>
+            <p class="nomal console">동작문이 하나 이상일 경우: if(조건식){<br>&nbsp;&nbsp;동작문1;<br>&nbsp;&nbsp;동작문2;<br>&nbsp;&nbsp;동작문3}</p>
+            <p class="nomal">조건식 자리에 true로 형 변환되는 값(참인 값)이나 그것을 담고 있는 변수를 넣어도 된다.</p>
+            <script>
+                //기본형식
+                    // if(조건식){
+                    //     동작문;
+                    // }
+        
+                //동작문이 하나 이상일 경우
+                    // if(조건식){
+                    //     동작문1;
+                    //     동작문2;
+                    //     동작문3;
+                    // }
+        
+                if(true){
+                    console.log('조건문 예시 텍스트입니다. 조건식이 true입니다.')
+                }
+        
+                console.log('0의 불값은? ' + !!0);
+        
+                if(false || 0){
+                    console.log('조건문 예시 텍스트입니다. 조건식이 false입니다.')
+                } //실행 안 됨
+        
+                let value = '사과';
+                let condition = 'true';
+                if(condition){
+                    value = '바나나';
+                }
+                console.log('사과였던 변수 value의 값은? ' + value);
+            </script>
+        </section>
+
+        <section>
+            <h3>조건문(else)</h3>
+            <p class="nomal">조건식이 true가 아닌 false일 때 다른 동작문을 실행하고 싶다면 else를 사용한다.</p>
+            <p class="nomal">if(조건식){<br>&nbsp;&nbsp;동작문;<br>} else{<br>&nbsp;&nbsp;동작문;}</p>
+            <script>
+                // if(조건식){ //조건식이 참인 값일 때 실행
+                //     동작문;
+                // } else{ //조건식이 거짓인 값일 때 실행
+                //     동작문;
+                // }
+
+                if(false){ 
+                    console.log('hello, if!');
+                } else{ //실행
+                    console.log('hello, else!')
+                }
+
+                let fruit = '사과';
+                console.log('처음 값: ' + fruit);
+                let condition2 = false;
+                if(condition2){ //false
+                    fruit = '바나나';
+                } else{
+                    fruit = '포도';
+                }
+                console.log('else if문 이후 값: ' + fruit);
+            </script>
+        </section>
+
+        <section>
+            <h3>조건문(else if)</h3>
+            <p class="nomal console" onclick="scoreHandler()">조건이 여러 개일 경우 사용 if else_if else_if else_if else_if else ...</p>
+            <p class="nomal">if(조건식){<br>&nbsp;&nbsp;동작문;<br>} else if(조건식){<br>&nbsp;&nbsp;동작문;<br>} else{<br>&nbsp;&nbsp;동작문;}</p>
+            <p class="nomal">if문에서 else와 else if는 선택이며 꼭 else로 끝나지 않아도 된다. if else_if else_if 순서도 사용 가능하다.</p>
+            <p class="nomal">조건문은 위에서부터 아래로 실행된다.</p>
+            <script>
+                // if(조건식){
+                //     동작문;
+                // } else if(조건식){
+                //     동작문;
+                // } else{ //위의 조건들이 모두 다 해당이 안 되면 실행
+                //     동작문;
+                // }
+
+                // function scoreHandler(){
+                //     let score = prompt('점수를 입력하세요.'); 
+                    
+                //     if(score >= 90){
+                //         console.log('90점 이상입니다. A+입니다.');
+                //     } else if(score < 90 && score >= 80){
+                //         console.log('89점 ~ 80점입니다. A입니다.');
+                //     } else if(score < 80 && score >= 70){
+                //         console.log('79점 ~ 70점입니다. B+입니다.');
+                //     } else if(score < 70 && score >= 60){
+                //         console.log('69점 ~ 60점입니다. B입니다.');
+                //     } else {
+                //         console.log('60점 미만입니다. F입니다.');
+                //     }
+                // }
+
+                //조건문은 위에서부터 아래로 실행된다.
+                function scoreHandler(){
+                    let score = prompt('점수를 입력하세요.'); 
+                    
+                    if(score >= 90){ //90점 이상
+                        console.log('90점 이상입니다. A+입니다.');
+                    } else if(score >= 80){ //80점 이상
+                        console.log('89점 ~ 80점입니다. A입니다.');
+                    } else if(score >= 70){ //70점 이상
+                        console.log('79점 ~ 70점입니다. B+입니다.');
+                    } else if(score >= 60){ //60점 이상
+                        console.log('69점 ~ 60점입니다. B입니다.');
+                    } else { //60점 미만
+                        console.log('60점 미만입니다. F입니다.');
+                    }
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>중첩if문</h3>
+            <p class="nomal">if나 else, eles if 문으 중괄호 앙네 동작문을 넣을 수 있다는 사실을 활용할 수 있다.<br>조건문도 문이기 때뭉네 중괄호 안에 다시 넣을 수 있다.</p>
+            <p class="nomal">중첩if문은 피하는 것이 좋다.<br>중첩 if문은 논리적으로 if_else if_else문으로 변환할 수 있다.<br>조건문이 중첩되어 들여쓰기가 깊어질수록 코드는 읽기 어려워진다.<br>따라서 중첩if문을 if_else if_else문으로 변환해 코드의 가독성을 높이길 권장한다.</p>
+            <script>
+                //중첩문 많이 사용
+                // let first = true;
+                // let second = false;
+                // if(first){
+                //     console.log('첫 번째 조건 충족!');
+                //     if(second){
+                //         console.log('두 번째 조건도 충족!');
+                //     } else {
+                //         console.log('두 번째 조건은 불충족!');
+                //     }
+                // } else {
+                //     console.log('첫 번째 조건 불충족!');
+                // }
+
+                //중첩문 최대한 미사용
+                let first = true;
+                let second = false;
+                if(first && second){ //first와 second 모두 true
+                    console.log('첫 번째 조건 충족!');
+                    console.log('두 번째 조건도 충족!');
+                } else if(first){ //first만 true
+                    console.log('첫 번째 조건 충족!');
+                    console.log('첫 번째 조건은 불충족!');
+                } else { //둘 다 false
+                    console.log('첫 번째 조건 불충족!');
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>조건문(switch)</h3>
+            <p class="nomal">switch(조건식){<br>case 비교조건식:<br>동작문;}</p>
+            <p class="nomal">switch문에는 조건식 두 개가 사용된다.<br>switch 옆 소괄호 조건식의 값이 case의 비교 조건식 값과 일치(===)하면 해당 동작문이 실행된다.<br>보통 조건식에 변수를 넣고, 비교조건식에는 변수와 비교할 값을 넣는다.</p>
+            <p class="nomal">switch문은 일치하는 case를 발견하면 일치 여부와 상관없이 그 아래 case들의 동작문을 모두 실행한다.<br>따라서 원하는 결과만 얻으려면 수동으로 case에서 빠져나와야 한다.<br>이때 break문이 사용된다.</p>
+            <p class="nomal">break 중요!!</p>
+            <p class="nomal">default는 if문의 else와 동일한 역할이다. 위치 상관 없이 맨 위나 맨 아래 위치 가능하다.<br>하지만 if문의 else는 마지막에만 위치할 수 있다.</p>
+            <p class="nomal">비교조건식 분에 문자열만 들어오는 것은 아니다.</p>
+            <script>
+                // switch(조건식){
+                //     case 비교조건식:
+                //     동작문;
+                // }
+
+                let value2 = 'A';
+                switch (value2){
+                    case 'A':
+                        console.log('동일하다. 값: A');
+                }
+
+                let value3 = 'A';
+                switch (value3){
+                    case 'A':{
+                        console.log('둘 다');
+                        console.log('실행');
+                    }
+                }
+
+                let value4 = 'B';
+                switch(value4){
+                    case 'A':{
+                        console.log('A');
+                    }
+                    case 'B':{
+                        console.log('B');
+                    }
+                    case 'C':{
+                        console.log('C');
+                    }
+                } //B, C 출력
+
+                let value5 = 'A';
+                switch(value5){
+                    case 'A':{
+                        console.log('A');
+                    }
+                    case 'B':{
+                        console.log('B');
+                        break;
+                    }
+                    case 'C':{
+                        console.log('C');
+                    }
+                } //A, B 출력하고 B에서 멈춤
+
+                let value6 = '묭';
+                switch(value6){
+                    default:{
+                        console.log('아무것도 일치하지 않음');
+                        break;
+                    }
+                    case 'A':{
+                        console.log('A');
+                    }
+                    case 'B':{
+                        console.log('B');
+                    }
+                } //default 출력
+            </script>
+        </section>
+
+        <section>
+            <h3>조건부 연산자(삼항 연산자)</h3>
+            <p class="nomal">if문과 switch문 외에도 분기 처리에 사용하는 식이 있는데 그것은 조건부 연산자(삼항 연산자)이다.</p>
+            <p class="nomal">삼항 연산자의 기본 형식: 조건식 ? 참일 때 실행되는 식 : 거짓일 때 실행되는 식</p>
+            <p class="nomal">조건부 연산자는 문이 아니라 식이기 때문에 결과값이 나온다.</p>
+            <p class="nomal">조건부 연산자도 if문과 switch문처럼 중첩해서 사용이 가능하다.</p>
+            <p class="nomal console">
+                condition3 ? condition4 ? '둘 다 참' : 'condition3만 참' : 'condition4이 거짓'
+                <img src="./image/if_1.jpg">
+            </p>
+            <p class="nomal">들여쓰기 사용 가능하다.</p>
+            <script>
+                5 > 0 ? '참입니다.' : '거짓입니다.'; //참
+                5 < 0 ? '참입니다.' : '거짓입니다.'; //거짓
+
+                //중첩 사용
+                let condition3 = true;
+                let condition4 = false;
+                // let value33 = condition3 ? condition4 ? '둘 다 참' : 'condition3만 참' : 'condition4이 거짓' 
+                // let value33 = condition3 ? (condition4 ? '둘 다 참' : 'condition3만 참') : 'condition4이 거짓' 
+                let value33 = condition3
+                    ? condition2
+                        ? '둘다 참'
+                        : 'condition3만 참'
+                    : 'condition4이 거짓'
+                
+                // 위 세 개는 모두 같은 내용이다.
+                console.log(value33);
+            </script>
+        </section>
+    </article>
+
+    <article>
+        <h2>반복문</h2>
+        <section>
+            <h3>반복문(while)</h3>
+            <p class="nomal">while(조건식)<br> 동작문;</p>
+            <p class="nomal">while문은 조건식이 참인 동안 반복해서 동작문을 실행한다.</p>
+            <script>
+                // while(조건식){
+                //     동작문;
+                // }
+
+                // while(조건식){
+                //     동작문1;
+                //     동작문2;
+                //     동작문3;
+                // }
+
+                // while(true){
+                //     console.log('무한반복... 실행하면 안 됨');
+                // }
+
+                let i = 1;
+                while(i <= 100){
+                    console.log('hello, while!');
+                    i++; //또는 i+= 1
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>반복문(for)</h3>
+            <p class="nomal">for(시작; 조건식; 종료식){<br>동작문;}</p>
+            <p class="nomal">
+                순서: 시작 -> 조건식 참 -> 동작문 -> 종료식<br>
+                <img src="./image/for_1.jpg">
+            </p>
+            <p class="nomal">for문의 시작, 조건식, 종료식은 생략할 수 있다.<br>for(;;){<br>} <i>이 경우에는 무한반복이다.</i></p>
+            <script>
+                // for(시작; 조건식; 종료식;){
+                //     동작문;
+                // }
+                // 시작 -> 조건식 참 -> 동작문 -> 종료식
+
+                for(let f = 0; f < 100; f++){
+                    console.log('hello, for!');
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>break문</h3>
+            <p class="nomal">반복문을 중간에 멈추게 할 수 있다.</p>
+            <p class="nomal">let i = 0;<br>while(true){<br> if(i === 5) break;<br> i++<br>}<br>console.log(i) <i>5</i></p>
+            <p class="nomal">break를 만나는 순간 바.로 그 자리에서 while문이 끝난다.</p>
+            <p class="nomal">무한반복일 경우는 while을 쓰는 듯하다.</p>
+            <script>
+                let b = 0;
+                while(true){
+                    if(b === 5) break;
+                    b++;
+                }
+                console.log(b);
+            </script>
+        </section>
+
+        <section>
+            <h3>continue</h3>
+            <p class="nomal">continue문을 넣으면 해당 코드는 건너뛰게 된다.</p>
+            <p class="nomal">let i = 0;<br>while(i < 10)<br>i++;<br>if(i % 2 === 0){<br>continue;}<br>console.log(i);</p>
+            <p class="nomal">주석 아끼지 말기!</p>
+            <script>
+                let c = 0;
+                while(c < 10){ //홀수만 출력
+                    c++;
+                    if(c % 2 === 0){ //2로 나눴을 때 0인 것들만(짝수)
+                        continue; //건너뛰기
+                    }
+                    console.log(c);
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>중첩 반복문</h3>
+            <p class="nomal">프로그래밍 할 때 어려운 것 중 하나가 중첩된 반복문이다. 반복문 안에 반복문이 있는 경우인데, 이를 "반복문이 중첩됐다."라고 표현한다.</p>
+            <p class="nomal">
+                for(let i = 0; i < 10; i++){<br>for(let j = 0; j < 10; j++){<br> console.log(i, j);}<br>}<br>
+                <img src="./image/for_2.jpg">
+            </p>
+            <p class="nomal">설명: i를 가진 for문은 중첩되어있는(j를 가진 for문) for문이 모두 완료가 되면 한 번의 턴이 완료된다.<br>따라서,<br><i>console.log(0,0...1...2... 9)<br>console(1,0...1...2... 9)<br>console(2,0...1/i>가 된다.</p>
+            <p class="nomal">콘솔 꼭 확인하기!!</p>
+            <script>
+                // 중첩 1개의 반복문
+                for(let ii = 0; ii < 10; ii++){
+                    for(let jj = 0; jj < 10; jj++){
+                        console.log('중첩 반복문: ' + ii,jj);
+                    }
+                }
+
+                // 중첩 2개의 반복문
+                for(let i = 0; i < 5; i++){
+                    if(i % 2 === 0){
+                        continue; //조건 부합일 경우 밑에 거 실행 X;
+                    }
+                    for(let j = 0; j < 5; j++){
+                        if(j % 2 === 0){
+                            continue;
+                        }
+                        for(let k = 0; k < 5; k++){
+                            if(k % 2 === 0){
+                                continue;
+                            }
+                            console.log('중첩중첩 반복문: ' + i, j, k);
+                        }
+                    }
+                }
+
+                // 홀수만 출력하는 구구단 만들기
+                // 방법1
+                for(let i = 0; i < 10; i++){
+                    if(i % 2 === 0) continue;
+                    for(let j = 0; j < 10; j++){
+                        if(j % 2 === 0) continue;
+                        console.log(`홀수 구구단 방법1: ${i}*${j} = ${i*j}`);
+                    }
+                }
+
+                // 방법2
+                for(let i = 1; i < 10; i=i+2){ //i=i+2는 i+=2로도 대체 가능하다.
+                    for(let j = 1; j < 10; j=j+2){
+                        console.log(`홀수 구구단 방법2: ${i}*${j} = ${i*j}`);
+                    }
+                }
+
+                // 방법3
+                for(let i = 0; i < 10; i++){ //i=i+2는 i+=2로도 대체 가능하다.
+                    for(let j = 0; j < 10; j++){
+                        if(i % 2 === 0 || j % 2 === 0) continue;
+                        console.log(`홀수 구구단 방법3: ${i}*${j} = ${i*j}`);
+                    }
+                }
+            </script>
+        </section>
+
+        <section>
+            <h3>별찍기 숙제</h3>
+            <p class="nomal console">for(let i = 0; i < 5; i++){<br> console.log('*'.repeat(i+1))}<br><i>콘솔: * ** *** **** *****</i></p>
+            <p class="nomal">'*'.repeat(i+1) *를 i+1 반복해서 찍어라. 라는 뜻이다.</p>
+            <p class="nomal">
+                규칙을 찾아라. i를 0으로 고정하고 거꾸로 별찍기를 하고 싶다면, 나와야 하는 숫자의 규칙을 찾아라...
+                <img src="./image/for_3.jpg">
+            </p>
+            <script>
+                // 별 * ** *** **** *****
+                for(let i = 0; i < 5; i++){
+                    console.log('별찍기: ' + '*'.repeat(i + 1))
+                }
+
+                // 별 ***** **** *** ** *
+                for(let i = 5; i >= 1; i--){
+                    console.log('거꾸로 별찍기: ' + '*'.repeat(i))
+                }
+
+                for(let i = 0; i < 5; i++){
+                    console.log('별찍기 i고정: ' + '*'.repeat(5 - i))
+                }
+
+                for(let i = 0; i < 5; i++){
+                    console.log(' '.repeat(i+1) +'*'.repeat(5-i))
+                }
+
+                for(let i = 0; i < 5; i++){
+                    console.log(' '.repeat(5-i) +'*'.repeat(i+1))
+                }
+            </script>
+        </section>
+    </article>
+</body>
+</html>
