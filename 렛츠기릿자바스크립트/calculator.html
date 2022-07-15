@@ -12,8 +12,8 @@
 
 <!-- 계산기 버튼 구현 -->
 <body>
-  <input readonly id="operator">
-  <input readonly type="number" id="result">
+  <input id="operator" readonly>
+  <input type="number" id="result" readonly>
   <div class="row">
     <button id="num-7">7</button>
     <button id="num-8">8</button>
@@ -41,4 +41,42 @@
 
   <img src="./images/calculator-01.jpg" alt="화면 설계도">
   <img src="./images/calculator-02.jpg" alt="화면 설계도">
+
+  <script>
+    let numOne = '';
+    let operator = '';
+    let numTwo = '';
+
+    const $operator = document.querySelector('#operator'); //작은 네모
+    const $result = document.querySelector('#result'); //긴 네모
+
+    const onClickNumber = (number) => () => { //number는 매개변수이다. //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
+      if(operator) { //비어있지 않다.
+        numTwo += number; // numTwo = numTwo + number
+      } else { //비어있다.
+        numOne += number; // numOne = numOne + number
+      }
+      $result.value += number //$result.value = $result.value + number //화면 표시
+
+      // 함수는 항상 마지막에 return undefined가 있다.
+    };
+
+    document.querySelector('#num-0').addEventListener('click', onClickNumber('0'));
+    document.querySelector('#num-1').addEventListener('click', onClickNumber('1'));
+    document.querySelector('#num-2').addEventListener('click', onClickNumber('2'));
+    document.querySelector('#num-3').addEventListener('click', onClickNumber('3'));
+    document.querySelector('#num-4').addEventListener('click', onClickNumber('4'));
+    document.querySelector('#num-5').addEventListener('click', onClickNumber('5'));
+    document.querySelector('#num-6').addEventListener('click', onClickNumber('6'));
+    document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
+    document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
+    document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
+
+    document.querySelector('#plus').addEventListener('click', () => {});
+    document.querySelector('#minus').addEventListener('click', () => {});
+    document.querySelector('#divide').addEventListener('click', () => {}); // 나누기
+    document.querySelector('#multiply').addEventListener('click', () => {}); // 곱하기
+    document.querySelector('#calculate').addEventListener('click', () => {}); //계산
+    document.querySelector('#clear').addEventListener('click', () => {}); // 계산 초기화
+  </script>
 </body>
