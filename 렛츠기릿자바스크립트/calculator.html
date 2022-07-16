@@ -36,7 +36,7 @@
     <button id="clear">C</button>
     <button id="num-0">0</button>
     <button id="calculate">=</button>
-    <button id="multiply">x</button>
+    <button id="multiply">*</button>
   </div>
 
   <img src="./images/calculator-01.jpg" alt="화면 설계도">
@@ -50,7 +50,7 @@
     const $operator = document.querySelector('#operator'); //작은 네모
     const $result = document.querySelector('#result'); //긴 네모
 
-    const onClickNumber = (number) => () => { //number는 매개변수이다. //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
+    const onClickNumber = (number) => (event) => { //number는 매개변수이다. //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
       if(operator) { //비어있지 않다.
         numTwo += number; // numTwo = numTwo + number
       } else { //비어있다.
@@ -72,11 +72,58 @@
     document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
     document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
 
-    document.querySelector('#plus').addEventListener('click', () => {});
-    document.querySelector('#minus').addEventListener('click', () => {});
-    document.querySelector('#divide').addEventListener('click', () => {}); // 나누기
-    document.querySelector('#multiply').addEventListener('click', () => {}); // 곱하기
-    document.querySelector('#calculate').addEventListener('click', () => {}); //계산
-    document.querySelector('#clear').addEventListener('click', () => {}); // 계산 초기화
+    const onClickOperator = (op) => () => {
+      if(numOne) { //numOne 있으면
+        operator = op;
+        $operator.value = op;
+      } else {
+        alert('숫자를 먼저 입력하세요.');
+      }
+    }
+    document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
+    document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
+    document.querySelector('#divide').addEventListener('click', onClickOperator('/')); // 나누기
+    document.querySelector('#multiply').addEventListener('click', onClickOperator('*')); // 곱하기
+    document.querySelector('#calculate').addEventListener('click', onClickOperator('=')); //계산
+    document.querySelector('#clear').addEventListener('click', onClickOperator('+')); // 계산 초기화
+  </script>
+
+  <script>
+    //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
+    const func01 = () => {
+      return (/*여기는 event 들어갈 수 있음.*/) => {
+        console.log('hello');
+      }
+    }
+
+    // func 함수를 호출하면 함수를 반환합니다. 반환된 함수는 다른 변수에 저장할 수 있고, 변수에 저장된 함수를 다시 호출할 수도 있습니다.
+    const innerFunc01_1 = func01(); //func 함수를 호출한 걸 innerFunc라는 변수에 담음. innerFunc는 func의 return 값임. 따라서 hello가 나옴
+    innerFunc01_1(); //hello
+
+    // ---
+
+    // const func02 = (msg) => { //msg는 매개변수
+    //   return () => {
+    //     console.log(msg);
+    //   }
+    // }
+
+    const func02 = (msg) => (/*얘가 return임*/) => {
+      console.log(msg);
+    }
+
+    // func02 함수를 호출하면, func02에 넣은 매개변수를 console.log 하는 함수가 반환됩니다.
+    const innerFunc02_1 = func02('innerFunc02_1');
+    const innerFunc02_2 = func02('innerFunc02_2');
+    const innerFunc02_3 = func02('innerFunc02_3');
+
+    innerFunc02_1(); //innerFunc02_1
+    innerFunc02_2(); //innerFunc02_2
+    innerFunc02_3(); //innerFunc02_3
+
+    // ex) //func 함수 호출 부분을 return 값으로 대체해 보면 이해될 겁니다. 이때 매개변수 위치에는 실제 값을 넣어야 합니다.
+    // const innerFunc02_1 = () => {
+    //   console.log('innerFunc02_1'); //참고: 빈 값은 undefied
+    // }
   </script>
 </body>
