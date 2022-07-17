@@ -50,27 +50,36 @@
     const $operator = document.querySelector('#operator'); //작은 네모
     const $result = document.querySelector('#result'); //긴 네모
 
-    const onClickNumber = (number) => (event) => { //number는 매개변수이다. //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
-      if(operator) { //비어있지 않다.
-        numTwo += number; // numTwo = numTwo + number
-      } else { //비어있다.
-        numOne += number; // numOne = numOne + number
+    const onClickNumber = (event) => { //number는 매개변수이다. //함수가 함수를 리턴하고 있다. = 고차함수(high order function)
+      if(!operator) { //비어있다.
+        numOne += event.target.textContent; // numOne = numOne + number
+        $result.value += event.target.textContent;
+        return;
       }
-      $result.value += number //$result.value = $result.value + number //화면 표시
 
-      // 함수는 항상 마지막에 return undefined가 있다.
+      //비어있지 않다.
+      if(!numTwo) {
+        $result.value = '';
+      }
+
+      numTwo += event.target.textContent; // numTwo = numTwo + number
+      $result.value += event.target.textContent;
     };
+    //$result.value = $result.value + number //화면 표시
 
-    document.querySelector('#num-0').addEventListener('click', onClickNumber('0'));
-    document.querySelector('#num-1').addEventListener('click', onClickNumber('1'));
-    document.querySelector('#num-2').addEventListener('click', onClickNumber('2'));
-    document.querySelector('#num-3').addEventListener('click', onClickNumber('3'));
-    document.querySelector('#num-4').addEventListener('click', onClickNumber('4'));
-    document.querySelector('#num-5').addEventListener('click', onClickNumber('5'));
-    document.querySelector('#num-6').addEventListener('click', onClickNumber('6'));
-    document.querySelector('#num-7').addEventListener('click', onClickNumber('7'));
-    document.querySelector('#num-8').addEventListener('click', onClickNumber('8'));
-    document.querySelector('#num-9').addEventListener('click', onClickNumber('9'));
+    // 함수는 항상 마지막에 return undefined가 있다.
+    
+
+    document.querySelector('#num-0').addEventListener('click', onClickNumber);
+    document.querySelector('#num-1').addEventListener('click', onClickNumber);
+    document.querySelector('#num-2').addEventListener('click', onClickNumber);
+    document.querySelector('#num-3').addEventListener('click', onClickNumber);
+    document.querySelector('#num-4').addEventListener('click', onClickNumber);
+    document.querySelector('#num-5').addEventListener('click', onClickNumber);
+    document.querySelector('#num-6').addEventListener('click', onClickNumber);
+    document.querySelector('#num-7').addEventListener('click', onClickNumber);
+    document.querySelector('#num-8').addEventListener('click', onClickNumber);
+    document.querySelector('#num-9').addEventListener('click', onClickNumber);
 
     const onClickOperator = (op) => () => {
       if(numOne) { //numOne 있으면
@@ -125,5 +134,29 @@
     // const innerFunc02_1 = () => {
     //   console.log('innerFunc02_1'); //참고: 빈 값은 undefied
     // }
+  </script>
+  <script>
+    // <중첩 줄이기>
+    // 1. if문 다음에 나오는 공통된 절차를 각 분기점 내부에 넣는다.
+    // 2. 분기점에서 짧은 절차부터 실행하게 if 문을 작성한다.
+    // 3. 짧은 절차가 끝나면 return(함수 내부의 경우)이나 break(for문 내부의 경우)로 중단한ㄷ.
+    // 4. else 를 제거한다.(이때 중첩 하나가 제거된다.)
+    
+    function test() {
+      let result = '';
+      if(!a) {
+        result = 'a';
+        result += 'b';
+        return result;
+        
+      } 
+      
+      if(!b) {
+        result = 'c';
+      }
+
+      result += 'b';
+      return result;
+    }
   </script>
 </body>
