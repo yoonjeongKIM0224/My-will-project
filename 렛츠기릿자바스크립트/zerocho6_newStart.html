@@ -8,120 +8,71 @@
 </head>
 <body>
     <div>
-        <span id="order">1</span>번째 참가자
-    </div>
+		<span id="order">1</span>번째 참가자
+	</div>
 
-    <div>
-        제시어: <span id="word"> </span>
-    </div>
-    
-    <input type="text">
+	<div>
+		제시어: <span id="word"> </span>
+	</div>
 
-    <button type="button">입력</button>
+	<input type="text">
 
-    <!-- <button>버튼1</button> -->
-    <!-- <button>버튼2</button> -->
-    <img src="./images/zerocho6_newStart-01.jpg" alt="화면 설계도">
-    <img src="./images/zerocho6_newStart-02.jpg" alt="화면 설계도">
-    <img src="./images/zerocho6_newStart-03.jpg" alt="화면 설계도">
+	<button type="button">입력</button>
+
+    <select name="" id=""></select>
 
     <script>
-        const number = Number(prompt('몇 명이 참가하나요?')); //몇 명이 참가할지 선택한다.
-        // prompt 함수에서 취소를 눌렀다면 값이 null이 되고, 그 값이 number 함수에 들억면 NaN이 된다.
-
-        if(number) {
-            const $button = document.querySelector('button');
-            const $input = document.querySelector('input');
-            const $word = document.querySelector('#word');
-            const $order = document.querySelector('#order');
-
-            let word; //미리 만든 변수: 제시어를 저장할 변수 = 제시어
-            let newWord; //미리 만든 변수: 새로 입력한 단어를 저장할 변수 = 새로 입력한 단어
-
-            const onClickButton = () => {
-                // (!word || (word[word.length - 1] === newWord[0] && newWord.length === 3)) //쿵쿵따일 경우
-                if(!word || word[word.length - 1] === newWord[0]) { //제시어가 비어있는가? 또는 입력한 단어가 올바른가?
-                    word = newWord; //제시어(빈값도 포함)는 새로 입력한 단어가 된다.
-                    $word.textContent = word; //html text
-
-                    const order = parseInt($order.textContent); //현재 3순서(html의 order 문자열을 숫자로 변경하기 위해 parseInt 사용)
-
-                    if(order + 1 > number) { // 또는 order === number
-                        $order.textContent = 1; // html order의 텍스트를 1로 변경
-                    } else {
-                        $order.textContent = order + 1;  // html order의 텍스트를 현재 순서 + 1(즉, 다음 순서)로 변경
-                    }
-
-                } else { //올바르지 않는가
-                    alert('올바르지 않은 단어입니다.');
-                }
-
-                $input.value = ''; //인풋 작성 후 비워주는 센스
-                $input.focus(); //인풋에 포커스
-            }
-
-            // 인풋에 글자를 입력했을 때 값(newWord)을 가져오는 함수 = 단어 입력 input event
-            const onInput = (event) => {
-                newWord = event.target.value; //(미리 만든 변수: 새로 입력한 단어를 저장할 변수 = 새로 입력한 단어)에 저장
-            }
-
-            $button.addEventListener('click', onClickButton);
-            $input.addEventListener('input', onInput); //input(행위)을 하면서 발생하는 이벤트
-        }
-
-         /* -------------------------------------------------- 퀴즈 목록 -------------------------------------------------- */ 
-
-        // 1. 세 글자 이상의 단어를 저장하고 있는 word(wordTemp 대체)라는 변수가 있을 때 뒤에서 세 번째 글자를 가져오는 코드를 작성하세요.
-        let wordTemp = '안녕하세요';
-        console.log(wordTemp[wordTemp.length - 3]);
-
-    </script>
-
-    <!-- <script> 
-        //위: 스크립트 / 아래: 설명
-        document.querySelector('input').addEventListener('input', function(event){
-            console.log('글자 입력', event.target.value);
-            //event.target.value tag input의 value(쓴 값)
-        });
-        // 입력 = input 
-        // addEventListener('input') = 글자를 input할 때마다 함수 실행!! (지울 때도 실행됨!!)
-
-        // 함수 분리(익명함수, 콜백함수, 리스너함수라고 불린다.)
-        const onClickButton = () => {
-            console.log('버튼 클릭');
-        };
-        // callback = 전화를 다시 걸어주다.
-        // 어떤 동작을 실행하고 난 뒤에 연이어 실행하는 함수 = 콜백함수
-
-        document.querySelector('button').addEventListener('click', onClickButton);
-        // onClickButton()이 아닌 이유 = return undefined 생략으로 ()를 쓰면 undefined를 쓰는 것과 마찬가지이다.
-    </script> -->
-
-    <!-- <script>
-        // prompt를 변수에 넣지 않으면 입력만 받고 값을 버림
-        // , 10 <- 10진법 표시(사실 기본이 10이어서 입력 안 해도 됨)
-        const number = parseInt(prompt('몇 명이 참가하나요?'), 10); //입력창
-        alert(number); //경고창
-        const yesOrNo = confirm('맞나요?');
-    </script> -->
-
-    <!-- <script>
-        document.querySelector('input');
+        const number = Number(prompt('몇 명이 참가하나요?'));
         const $button = document.querySelector('button');
-        //제로초 님은 태그 선택자의 변수명은 $를 사용한다.
-        //해당 엘레멘트가 여러 개일 경우, querySelector는 가장 첫번째 엘렘만 가져온다.
+        const $input = document.querySelector('input');
+        const $word = document.querySelector('#word');
+        const $order = document.querySelector('#order');
+    
+        let word; //제시어
+        let newWord; //새로 입력한 단어
         
-        // const $$button = document.querySelectorAll('button');
-        //제로초 님은 태그 여러 개 선택자의 변수명은 $$를 사용한다.
-
-        console.log($$button);
-        //NodeList(3):
-        //0과 length를 속성 이름으로 갖고 있는 객체(배열인 척 하는 객체)
-        //유사배열(array like object)이며 배열이 아니기 때문에 배열의 메서드나 속성을 쓸 수 없는 경우가 많다.
-
-        function temp01(){
-            console.log(arguments);
-            // arguments도 배열이 아니고 array like object이다.
+        //버튼을 눌렀을 때
+        const onClickButton = () => {
+            if(!word){ //제시어가 비었을 경우
+                word = newWord; //제시어 = 새로 입력한 단어가 되고,
+                $word.textContent = word; // #word의 내용은 제시어가 되고,
+                const order = Number($order.textContent); //현재 순서(#order의 string을 number로 변경) 
+                if(order + 1 > number) { //또는 order === number
+                    $order.textContent = 1; //형 변환됨
+                } else {
+                    $order.textContent = order + 1;
+                }
+                $input.value = ''; //input은 비워 준다.
+                   $input.focus(); //input에 포커스
+            } else{ 
+                //제시어가 비어있지 않을 경우
+                //제시어의 끝 글자와 새로 입력한 단어의 첫 글자가 같은지
+                if(word[word.length - 1] === newWord[0]) { //같다.
+                    word = newWord; //제시어 = 새로 입력한 단어가 되고,
+                    $word.textContent = word; // #word의 내용은 제시어가 되고,
+                    const order = Number($order.textContent); //현재 순서(#order의 string을 number로 변경) 
+                    if(order + 1 > number) { //또는 order === number
+                        $order.textContent = 1; //형 변환됨
+                    } else {
+                        $order.textContent = order + 1;
+                    }
+                    $input.value = ''; ///input은 비워 준다.
+                    $input.focus(); //input에 포커스
+                } else { //같지 않다.
+                    alert('올바르지 않은 단어입니다!');
+                    $input.value = ''; ///input은 비워 준다.
+                    $input.focus(); //input에 포커스
+                }
+            }
         }
-    </script> -->
+       
+        const onInput = (event) => {
+            newWord = event.target.value;
+            //newWord의 값 = input의 value(input을 input할 때마다 실행)
+        }
+        
+        $button.addEventListener('click', onClickButton);
+        $input.addEventListener('input', onInput);
+    </script>
+</body>
 </html>
