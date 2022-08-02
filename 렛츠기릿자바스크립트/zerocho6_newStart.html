@@ -19,8 +19,6 @@
 
 	<button type="button">입력</button>
 
-    <select name="" id=""></select>
-
     <script>
         const number = Number(prompt('몇 명이 참가하나요?'));
         const $button = document.querySelector('button');
@@ -33,37 +31,23 @@
         
         //버튼을 눌렀을 때
         const onClickButton = () => {
-            if(!word){ //제시어가 비었을 경우
+            if(!word || word[word.length - 1] === newWord[0]){ //제시어가 비어있는가? 올바른 단어인가?
                 word = newWord; //제시어 = 새로 입력한 단어가 되고,
                 $word.textContent = word; // #word의 내용은 제시어가 되고,
-                const order = Number($order.textContent); //현재 순서(#order의 string을 number로 변경) 
+                const order = Number($order.textContent); //현재 순서(#order의 string을 number로 변경)
+                
                 if(order + 1 > number) { //또는 order === number
                     $order.textContent = 1; //형 변환됨
                 } else {
                     $order.textContent = order + 1;
                 }
-                $input.value = ''; //input은 비워 준다.
-                   $input.focus(); //input에 포커스
-            } else{ 
-                //제시어가 비어있지 않을 경우
-                //제시어의 끝 글자와 새로 입력한 단어의 첫 글자가 같은지
-                if(word[word.length - 1] === newWord[0]) { //같다.
-                    word = newWord; //제시어 = 새로 입력한 단어가 되고,
-                    $word.textContent = word; // #word의 내용은 제시어가 되고,
-                    const order = Number($order.textContent); //현재 순서(#order의 string을 number로 변경) 
-                    if(order + 1 > number) { //또는 order === number
-                        $order.textContent = 1; //형 변환됨
-                    } else {
-                        $order.textContent = order + 1;
-                    }
-                    $input.value = ''; ///input은 비워 준다.
-                    $input.focus(); //input에 포커스
-                } else { //같지 않다.
-                    alert('올바르지 않은 단어입니다!');
-                    $input.value = ''; ///input은 비워 준다.
-                    $input.focus(); //input에 포커스
-                }
+                
+            } else{ //올바르지 않은가
+                alert('올바르지 않은 단어입니다!');
             }
+
+            $input.value = ''; //input은 비워 준다.
+            $input.focus(); //input에 포커스
         }
        
         const onInput = (event) => {
