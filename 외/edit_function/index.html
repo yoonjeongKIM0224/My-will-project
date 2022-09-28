@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>편집 기능</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    :root{
+        --purple: #AF96D8;
+        --pink: #F3A1B1;
+        --yellow: #FFE988;
+        --white: #fff;
+    }
+
+    * {
+        position:relative;
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    input {
+        all:unset;
+        display:block;
+        margin:0;
+        padding:0;
+    }
+
+    body {
+        display:block;
+        width:100%;
+        box-sizing:border-box;
+        max-width:375px;
+        margin:0 auto;
+        padding:40px 20px;
+        border:1px solid rosybrown;
+    }
+
+    .all-wrap {
+
+    }
+
+    ul.list-wrap > li.list-item {
+        list-style:none;
+        padding:0;
+    }
+
+    .item-container {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        overflow:hidden;
+        padding:20px 56px 20px 64px;
+        border-radius:12px;
+        background:left 20px center / 32px no-repeat;
+        background-color:var(--purple);
+    }
+
+    .item-container > .item-name {
+        display:block;
+        color:var(--white);
+        font-weight:500;
+    }
+
+    .sweet-potato > .item-container {
+        background-image:url('./images/sweet_potato.png');
+    }
+
+    .function-wrap {
+        position:absolute;
+        top:50%;
+        right:20px;
+        transform:translateY(-50%);
+    }
+
+    .function-wrap > .input-label-wrap.bookmark > label::after {
+        content:url('./images/bookmark_off.png');
+        display:block;
+        width:25px;
+        height:25px;
+    }
+
+    .function-wrap > .input-label-wrap.bookmark [type="checkbox"]:checked + label::after {
+        content:url('./images/bookmark_on.png');
+    }
+
+    .function-wrap > .input-label-wrap.delete > [type="button"] {
+        height:0;
+    }
+
+    .function-wrap > .input-label-wrap.delete > label::after {
+        content:url('./images/delete.png');
+        display:block;
+        width:20px;
+        height:20px;
+    }
+
+    .function-wrap > * {
+        transition:0.5s;
+    }
+
+    .delete {
+        transform:translateX(100px);
+    }
+
+    .delete-mode .delete {
+        transform:translateX(0px);
+    }
+
+    .bookmark {
+        display:none;
+    }
+</style>
+
+<body>
+    <div class="all-wrap">
+        <ul class="list-wrap delete-mode">
+            <li class="list-item sweet-potato">
+                <div class="item-container">
+                    <span class="item-name">고구마 우유</span>
+    
+                    <!-- 기능 -->
+                    <div class="function-wrap">
+                        <div class="input-label-wrap bookmark">
+                            <input type="checkbox" id="bookmark01" aria-label="이 항목 즐겨찾기">
+                            <label for="bookmark01"></label>
+                        </div>
+    
+                        <div class="input-label-wrap delete" aria-hidden="true">
+                            <input type="button" id="delete01" aria-label="이 항목 삭제하기">
+                            <label for="delete01"></label>
+                        </div>
+                    </div>
+                    <!--// 기능 -->
+                </div>
+            </li>
+        </ul>
+    
+        <div class="btn-wrap">
+            <button type="button" onclick="temp()" aria-label="항목 삭제 모드 전환">편집</button>
+            <button type="button" onclick="temp()" aria-label="기본 모드 전환">편집</button>
+        </div>
+    </div>
+
+    <script>
+        function temp() {
+            let temp01 = document.querySelector('.list-wrap');
+
+            if(temp01.classList.contains('delete-mode')) {
+                //delete-mode 비활성화
+                temp01.classList.remove('delete-mode');
+            } else {
+                //delete-mode 활성화
+                temp01.classList.add('delete-mode');
+            }
+        }
+    </script>
+</body>
+</html>
