@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script type="module" src="/fetch.js"></script> -->
+
+    <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+    <!-- <script src=https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0/dist/fetch.umd.min.js></script> -->
+
+    <script src=https://cdn.jsdelivr.net/npm/promise-polyfill@8.1/dist/polyfill.min.js></script>
+    <script src=https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0/dist/fetch.umd.min.js></script>
+    <title>fetch</title>
+</head>
+<body>
+    <ol id="nav">
+        
+    </ol>
+
+    <article>
+
+    </article>
+
+    
+    <script>
+        // list - li 갖고 오기
+        fetch("list").then(function(response){
+            response.text().then(function(text){
+
+                
+                let items = text.split(',');
+                let tags = '';
+
+                console.log(items);
+
+                for(i = 0; i < items.length; i++){
+                    let item = items[i];
+                    item = item.trim(); //공백 없애기
+
+                    // let tag = `<li><a href="#!${item}" onclick="fetchPage('${item}')">${item}</a></li>`
+                    let tag = '<li><a href="#!'+item+'" onclick="fetchPage(\''+item+'\')">'+item+'</a></li>';
+
+                    tags = tags + tag;
+                }
+
+                document.querySelector('#nav').innerHTML = tags;
+            });
+        });
+
+        //fetchPage
+        function fetchPage(file){
+            fetch(file).then(function(response){
+                if(response.status == '404') {
+                    // document.querySelector('article').innerHTML = `${file}라는 파일이 존재하지 않습니다.`;
+                    document.querySelector('article').innerHTML = file + '라는 파일이 존재하지 않습니다.';
+                } else {
+                    response.text().then(function(text){ 
+                        // console.log(text)
+                        document.querySelector('article').innerHTML = text;
+                    });
+                }
+            });
+        }
+
+        //hash
+        if(location.hash) { //hash가 있으면
+            let target = location.hash.substr(2); //#!가 사라짐
+
+            fetchPage(target);
+        } else { //hash가 없으면
+            fetchPage('welcome');
+        }
+    </script>
+</body>
+</html>
