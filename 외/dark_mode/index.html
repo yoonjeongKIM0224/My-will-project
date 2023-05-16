@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode</title>
+
+    <style>
+        :root[color-theme="dark"] {
+            --bgColor: #000;
+            --txtColor: #fff;
+            --width: 50px;
+        }
+
+        :root[color-theme="bright"] {
+            --bgColor: #fff;
+            --txtColor: #000;
+            --width: 200px;
+        }
+
+        html, body {
+            background-color: var(--bgColor);
+            color: var(--txtColor);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="color">
+        <label for="color">다크모드</label>
+    </div>
+
+    <p>
+        안녕하세요.
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate, perspiciatis nulla accusantium reprehenderit possimus excepturi magnam quibusdam saepe libero modi atque sapiente fugiat molestiae necessitatibus. Repellat, architecto blanditiis! Animi.
+    </p>
+
+    <div class="box"></div>
+    
+    <script>
+        let colorCheck = document.querySelector('#color');
+
+        colorCheck.addEventListener('click', function(){
+            if(colorCheck.checked) {
+                document.documentElement.setAttribute('color-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('color-theme', 'bright');
+            }
+        });
+    </script>
+</body>
+</html>
