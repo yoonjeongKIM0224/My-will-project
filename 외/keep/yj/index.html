@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYJ Component</title>
+
+    <link rel="stylesheet" href="./assets/css/import/pc.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-container01">
+                <h1 class="header-logo"><a href="#" class="logo-wrap">LOGO</a></h1>
+
+                <nav class="header-nav">
+                    <div class="nav-wrap">
+                        <ul class="lnb">
+                            <li class="item node01 on">
+                                <a href="#" class="item-cont depth01">IA</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">Component</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">IA</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">Component</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">IA</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">Component</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">Component</a>
+                            </li>
+                            <li class="item node01">
+                                <a href="#" class="item-cont depth01">Component</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="header-container02">
+                <div class="indi-info">
+                    <div class="info-wrap">
+                        <ul class="gnb">
+                            <li class="item">
+                                <a href="https://github.com/yoonjeongKIM0224" target="_blank" class="item-cont" title="github 이동"></a>
+                            </li>
+                            <li class="item">
+                                <a href="https://velog.io/@gnoejnooy" target="_blank" class="item-cont" title="blog 이동"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="content">
+                <!-- tab -->
+                <!-- 
+                <조건>
+                - [role="tablist"][data-tabName] == [role="tabpanel"][data-tabParent]
+                - [aria-controls] == [role="tabpanel"]의 id
+                - 중복 가능
+                -->
+                <div role="tablist" data-tabName="tabtemp">
+                    <button type="button" role="tab" aria-selected="true" aria-controls="tabtemp-1">
+                        <span class="btn-txt">탭탭탭탭탭1</span>
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="tabtemp-2">
+                        <span class="btn-txt">탭탭탭탭탭2</span>
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="tabtemp-3">
+                        <span class="btn-txt">탭탭탭탭탭3</span>
+                    </button>
+                </div>
+
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-1" class="on">
+                    <div class="more-cont">
+                        <!-- 
+                            data-papa
+                            data-papa-type
+                            data-mama
+                        -->
+                        <div class="papa" role="button" data-papa="papapapa" data-papa-type="toggle">
+                            <div class="container">
+                                <span class="info tit">TITLE</span>
+                            </div>
+                            <div class="container">
+                                <span class="info date">2023-05-17</span>
+                                <span class="info state">완료</span>
+                            </div>
+                        </div>
+                        <div class="mama" data-mama="papapapa">
+                            <span>dffdf</span>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-2">운전면허증</div>
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-3">외국인등록증</div>
+                <!--// tab -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/modules/tab.js"></script>
+
+    <script>
+        let papa = document.querySelectorAll('[data-papa]');
+
+        papa.forEach(function(item){
+            let dataName = item.dataset.papa;
+            let mamamama = document.querySelectorAll(`[data-mama="${dataName}"]`);
+
+            item.addEventListener('click', function(){
+                if(item.dataset.papaType === "toggle") {
+                    item.classList.toggle('on');
+                    mamamama.forEach(function(maItem){
+                        maItem.classList.toggle('on');
+                    });
+                } else {
+                    item.classList.add('on');
+                    mamamama.forEach(function(maItem){
+                        maItem.classList.add('on');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

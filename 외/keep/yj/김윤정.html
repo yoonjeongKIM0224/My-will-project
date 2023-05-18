@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <title>신분증 확인-카드 신청-현대카드</title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+        }
+
+        [role="tabpanel"] {
+            display:none;
+        }
+
+        [role="tabpanel"].on {
+            display:block;
+        }
+
+        .modal-pop {
+            display:none;
+        }
+
+        .modal-pop.on {
+            display:block;
+        }
+
+        .progress_bar {
+            width:100%;
+            height: 2px;
+            background-color:#ddd;
+        }
+
+        .progress {
+            display:block;
+            height:100%;
+            background-color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div style="position:fixed; top:0; left:0; background-color:yellow; display:block; width:100%; height:60px;">
+            <button type="button">
+                <span>이전</span>
+            </button>
+
+            <div class="progress_bar" aria-label="100% 중">
+                <span class="progress" aria-label="20% 진행" style="width:20%;"></span>
+            </div>
+
+            <button type="button">
+                <span>닫기</span>
+            </button>
+        </div>
+
+        <div style="padding:60px 0;">
+            <h2>
+                아래 정보를 입력 후<br />
+                약관에 동의해 주세요.
+            </h2>
+
+            <!-- tab -->
+            <div>
+                <!-- 
+                <조건>
+                - [role="tablist"][data-tabName] == [role="tabpanel"][data-tabParent]
+                - [aria-controls] == [role="tabpanel"]의 id
+                - 중복 가능
+                -->
+                <div role="tablist" data-tabName="tabtemp">
+                    <button type="button" role="tab" aria-selected="true" aria-controls="tabtemp-1">
+                        <span>주민등록증</span>
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="tabtemp-2">
+                        <span>운전면허증</span>
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" aria-controls="tabtemp-3">
+                        <span>외국인등록증</span>
+                    </button>
+                </div>
+
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-1" class="on">주민등록증</div>
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-2">운전면허증</div>
+                <div role="tabpanel" data-tabParent="tabtemp" id="tabtemp-3">외국인등록증</div>
+            </div>
+            <!--// tab -->
+
+            <div class="form-wrap">
+                <div class="inp-wrap">
+                    <input type="text" placeholder="이름">
+                </div>
+                <div class="inp-wrap">
+                    <input type="text" placeholder="주민등록번호">
+                </div>
+                <div class="inp-wrap">
+                    <input type="text" placeholder="발급일자">
+                </div>
+                <div class="inp-wrap">
+                    <input type="text" placeholder="휴대폰번호">
+                </div>
+            </div>
+
+            <div>
+                <div class="inp-wrap">
+                    <input type="checkbox" name="all_check" id="all_check" data-childInp="checkList" onchange="allCheck(this)"/>
+                    <label for="all_check">전체동의</label>
+                </div>
+                <p class="form-message">아래 개인(신용)정보 필수/선택 동의 항목에 모두 동의합니다.</p>
+
+                <div class="box-wrap">
+                    <div class="box">
+                        <div class="inp-wrap">
+                            <input type="checkbox" name="checkList" id="checkList01" data-allInp="all_check" onchange="listCheck(this)" />
+                            <label for="checkList01">개인(신용)정보 필수적 동의</label>
+                            <button type="button" onclick="fetchPopup.open('fetch_popup', 'html')">
+                                <span>fetch 약관 전체 보기</span>
+                            </button>
+                            <button type="button" onclick="cssPopup.open('#cssPopup')">
+                                <span>popup 약관 전체 보기</span>
+                            </button>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    개인(신용)정보 필수적 수집·이용에 관한 사항
+                                </li>
+                                <li>
+                                    개인(신용)정보 필수적 수집·이용에 관한 사항
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="inp-wrap">
+                            <input type="checkbox" name="checkList" id="checkList02" data-allInp="all_check" onchange="listCheck(this)"/>
+                            <label for="checkList02">개인(신용)정보 필수적 동의</label>
+                            <a href="#">
+                                <span>약관 전체 보기</span>
+                            </a>
+                        </div>
+                        <div class="form-message">
+                            <p>
+                                동의 시 편의제공(사은품,할인쿠폰), 신상품(서비스) 소개 등
+                                다양한 혜택을 안내해 드립니다.
+                                미동의 시에도 카드 발급이 가능합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="inp-wrap">
+                            <input type="checkbox" name="checkList" id="checkList03" data-allInp="all_check" onchange="listCheck(this)"/>
+                            <label for="checkList03">
+                                카드 신청 미완료 시 연락을 위한 선택적 동의
+                            </label>
+                            <a href="#" class="arrow-btn">
+                                <span>약관 전체 보기</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="position:fixed; bottom:0; left:0; background-color:yellow; display:block; width:100%; height:60px;">
+            <!-- z-index:-1;: 팝업을 위한 -->
+            <div>
+                <div>
+                    <button type="button" style="height:50px; background:red;">하단 버튼</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cssPopup" class="modal-pop" style="background-color:rgb(132, 109, 109); position:absolute; width:100%; bottom:60px; left:0;">
+        <h2>cssPopup 팝업입니다.</h2>
+        <p>cssPopup 팝업입니다.</p>
+        <!-- Swiper -->
+        <div class="swiper cssPopUpswiper">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <button type="button" onclick="cssPopup.close('#cssPopup')">삭제버튼</button>
+    </div>
+
+    <script>
+        /* 탭메뉴 */
+        const CONTROLS_ATTR = 'aria-controls';
+        const SELECTED_ATTR = 'aria-selected';
+        
+        const tabList = document.querySelectorAll('[role="tablist"]'); //tabList 갖고 오기
+        tabList.forEach(tabHandler);
+
+        function tabHandler(tabListElem){
+            // console.log(tabListElem)
+            const tabBtn = tabListElem.querySelectorAll('[role="tab"]');
+
+            const tabContParent = tabListElem.dataset.tabname; //해당 탭 버튼의 [data-tabName]
+            const tabConts = document.querySelectorAll(`[data-tabParent="${tabContParent}"]`); //[data-tabName]에 해당하는 콘텐츠들 찾기
+
+            tabBtn.forEach(function(item){ //탭 버튼들을
+                item.addEventListener('click', function(){ //클릭했을 경우
+                    
+                    if(item.getAttribute(SELECTED_ATTR) === 'false') { //탭 버튼이 비활성화일 때만
+                        let itemControls = item.getAttribute(CONTROLS_ATTR); // aria-controls
+                        let itemCont = document.querySelector(`#${itemControls}`); //aria-controls와 id가 같은 콘텐츠 찾음
+
+                        tabBtn.forEach(function(item){ //탭 버튼들에게
+                            item.setAttribute(SELECTED_ATTR, 'false'); //aria-controls값 변경
+                            
+                            tabConts.forEach(function(item){
+                                item.classList.remove('on');
+                            });
+                        });
+
+                        item.setAttribute(SELECTED_ATTR, 'true'); //aria-controls값 변경
+                        itemCont.classList.add('on');
+                    }
+                });
+            });
+        }
+    </script>
+
+    <script>
+        /* 개별 체크에 사용 */
+        function listCheck(elem)  {
+            // 전체 체크박스
+            const checkboxes = document.querySelectorAll(`input[name="${elem.name}"]`);
+
+            // 선택된 체크박스
+            const checked = document.querySelectorAll(`input[name="${elem.name}"]:checked`);
+
+            // all_check 체크박스
+            const selectAll = document.querySelector(`input[name="${elem.dataset.allinp}"]`);
+
+            selectAll.checked = (checkboxes.length === checked.length); //전체 체크박스의 수와 선택된 체크박스의 수가 같아야 함.
+        }
+
+        /* 전체 체크 */
+        function allCheck(elem)  {
+            const checkboxes = document.querySelectorAll(`input[name="${elem.dataset.childinp}"]`);
+
+            checkboxes.forEach(function(item){
+                item.checked = elem.checked;
+            });
+        }
+    </script>
+
+    <script>
+        /* cssPopup */
+        cssPopup = {
+            open: function(popupId){
+                let popup = document.querySelector(popupId);
+
+                popup.classList.add('on');
+            },
+
+            close: function(popupId){
+                let popup = document.querySelector(popupId);
+
+                popup.classList.remove('on');
+            },
+        }
+
+        /* fetchPopup */
+        fetchPopup = {
+            open: function(file, extension){
+                fetch(`${file}.${extension}`).then(function(response){
+                    let filePresence = document.querySelector(`#${file}`);
+
+                    if(response.status == '404') {
+                        console.log(file + '.' + extension + '라는 파일이 존재하지 않습니다.');
+                    } else if(!filePresence) {
+                        response.text().then(function(text){
+
+                            const div = document.createElement('div');
+                            div.id = file;
+                            div.innerHTML = text;
+
+                            document.body.appendChild(div);
+                        });
+                    }
+                });
+            },
+
+            close: function(popupId){
+                document.querySelector(popupId).remove();
+            },
+        }
+    </script>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".cssPopUpswiper", {
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+</html>
